@@ -1,0 +1,49 @@
+llm:
+  base_url: ""
+  model_name: "GigaChat-2-Max"
+  cert_file: ""
+  key_file: ""
+  temperature: 0.01
+  top_p: 1
+  timeout: 50
+
+embedder:
+  base_url: ""
+  model_name: "Embeddings"
+  cert_file: ""
+  key_file: ""
+
+qe:
+  hyde: true
+  rephrase: false
+  step_back: false
+  answer: false
+
+retriever:
+    strategy: 'ss'
+    fusion_alpha: 1
+    k: 10
+    bm25_k: 20
+    rerank_k: None
+    has_answer_th: 0.
+
+rag:
+  type: 'vanilla'
+  adaptive:
+    n_loops: 5
+    n_retries: 10
+    use_rephrase: false
+    
+summarization: 
+  enable: true
+  type: "stuff"
+    
+filtering: 
+  enable: true
+  type: "map_reduce_soft"
+
+agent:
+  tools:
+    vnd: true
+    reasoning: true
+    web_search: true
