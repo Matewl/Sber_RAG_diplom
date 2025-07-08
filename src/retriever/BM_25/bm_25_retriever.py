@@ -3,7 +3,7 @@ import numpy as np
 from src.retriever.BM_25.utils import clean_text
 
 
-class BM_25: 
+class BM_25:  # TODO придумать здесь логику с одноразовой инициализацией
     def get_documents_with_scores(self, query, documents):
 
         clean_documents = [clean_text(doc.page_content) for doc in documents]

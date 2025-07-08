@@ -25,7 +25,7 @@ class Retriever:
                  rerank_k = None, 
                  has_answer_th = 0.,
                  
-                 path_to_big_part_base="C:\\Users\\22589910\\Desktop\\diplom\\indexes\\indexes\\search_big_part_base\\search_big_part_base.json"):
+                 path_to_big_part_base=""):
 
         self.database = FAISS.load_local(db_path,
                              embedder,
@@ -80,13 +80,11 @@ class Retriever:
         score_doc = score_doc[:self.k]
 
         if score_doc[0][0] < self.has_answer_th:
-            return None
+            return None, None
         relevant_docs = [elem[1] for elem in score_doc]
         scores = [elem[0] for elem in score_doc]
         return self._get_big_parts(relevant_docs), doc_scores
     
-    # def get_advance_query(self, query): # оболочка для продвинутого класса
-    #     return query
     def _get_big_parts(self, relevant_docs):
         big_parts = []
 
@@ -109,14 +107,6 @@ class Retriever:
 
 
     def get_big_part_text(self, file_name, part_number):
-        """
-        Возвращает текст для указанной части из указанного файла.
-
-        :param search_big_part_base: Словарь с объединёнными частями из всех файлов
-        :param file_name: Имя файла, из которого нужно извлечь часть
-        :param part_number: Номер части
-        :return: Текст части или сообщение об отсутствии
-        """
 
         file_parts = self.search_big_part_base.get(file_name, {})
 

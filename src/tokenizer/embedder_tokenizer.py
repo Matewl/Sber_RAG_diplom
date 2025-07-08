@@ -7,7 +7,7 @@ current_dir = Path(__file__).parent
 
 class EmbedderTokenizer:
     def __init__(self):
-        self.max_tokens = 480
+        self.max_tokens = 512
         self.tokenizer = Tokenizer.from_file(str(current_dir / 'e5-large' / "tokenizer.json"))
     
     def cut_string_by_max_tokens(self, string):

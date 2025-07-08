@@ -3,14 +3,14 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 
 from src.rag.vanila_rag import RAG
-from src.prompts import (REPHRASE_PROMPT, 
+from src.rag.prompts import (REPHRASE_PROMPT, 
                          IS_COMPLETE_PROMPT)
-from structured_outputs import AdaptiveTp
+from src.rag.structured_outputs import AdaptiveTp
 from src.tokenizer import EmbedderTokenizer
 
 class AdaptiveRAG(RAG):
-    def __init__(self, llm, retriever, n_loops=5, n_retries=10, use_rephrase=False):
-        super().__init__(llm, retriever)
+    def __init__(self, llm, retriever, summarizer=None, filter=None, n_loops=5, n_retries=10, use_rephrase=False):
+        super().__init__(llm, retriever, summarizer, filter)
         
         self.is_comlete_llm = llm.with_structured_output(AdaptiveTp)
         self.rephrase_llm = llm

@@ -2,20 +2,19 @@ from pydantic import BaseModel, Field
 
 
 class RephrasedQuestion(BaseModel):
-    """Преобразованный вопрос."""
-    question: str = Field(description="Вопрос, преобразованный к виду запроса к базе данных.")
+    """NDA"""
+    question: str = Field(description="""NDA""")
 
 class RephrasedQuestionsList(BaseModel):
-    """Список из 3 преобразованных вопросов."""
-    questions: list[RephrasedQuestion] = Field(description="3 версии вопроса, преобразованного к виду запроса к базе данных.")
-
+    """NDA"""
+    questions: list[RephrasedQuestion] = Field(description="""NDA""")
 
 class AnswerQuestion(BaseModel):
-    """Ответ на вопрос."""
-    answer: str = Field(description="Гипотетический ответ на вопрос.")
+    """NDA"""
+    answer: str = Field(description="""NDA""")
 
 class AnswerQuestionsList(BaseModel):
-    """Список из 3 ответов на вопрос."""
-    answers: list[AnswerQuestion] = Field(description="3 разнообразных ответа на вопрос.")
+    """NDA"""
+    answers: list[AnswerQuestion] = Field(description="""NDA""")
 
 

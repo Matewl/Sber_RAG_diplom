@@ -25,6 +25,7 @@ class QueryEnrichment:
                                                             }
         
         self.block_names = block_names
+        
     def enrich(self, query):
         enriched = [query]
         for enrichment_block_name in self.block_names:
